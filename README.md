@@ -12,7 +12,13 @@ Be sure that you have the following installed
 2. [Vagrant](http://www.vagrantup.com/)
 3. vbguest plugin for vagrant. It's simply installed by running `vagrant plugin install vagrant-vbguest`
 
-And it's pretty much a matter of running `vagrant up`
+If you haven't done so already, download this Vagrant project:
+
+```
+git clone https://github.com/westhouseproject/vagrant-westhouse.git
+```
+
+Then, it's only a matter of running `vagrant up`.
 
 If it's your first time running this Vagrant set-up, then you might have to wait a few minutes for everything to install first.
 
