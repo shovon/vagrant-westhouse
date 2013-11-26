@@ -18,11 +18,9 @@ If you haven't done so already, download this Vagrant project:
 git clone https://github.com/westhouseproject/vagrant-westhouse.git
 ```
 
-Then, it's only a matter of running `vagrant up`.
+Then, it's only a matter `cd`ing into `vagrant-westhouse` and then running `vagrant up`.
 
-If it's your first time running this Vagrant set-up, then you might have to wait a few minutes for everything to install first.
-
-Otherwise, it should take a few seconds until the machine is fully booted.
+If it's your first time running this Vagrant set-up, then you might have to wait a few minutes for everything to install first. Otherwise, it should take a few seconds until the machine is fully booted.
 
 ## Exposed Services
 
