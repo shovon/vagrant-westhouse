@@ -55,6 +55,7 @@ cd cube
 # Check out the latest stable release.
 git checkout v0.2.12
 # Install Cube's dependencies
+npm install websocket@1.0.8
 npm install
 cd ..
 
