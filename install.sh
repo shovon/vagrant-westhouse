@@ -39,25 +39,26 @@ if [ ! -f /usr/local/bin/node ]; then
 
 fi
 
-# Install Square's Cube if necessary
-if [ ! -f /etc/init/cube-collector.conf ]; then
+stop cube-collector
+stop cube-evaluator
 
-  # We will be saving cube in our home directory.
-  cd /home/vagrant
-  # Download the Cube repo.
-  if [ ! -d cube ]; then
-    git clone https://github.com/square/cube.git
-    # Change the directory into the repo's folder.
-    cd cube
-    # Check out the latest stable release.
-    git checkout v0.2.12
-    # Install Cube's dependencies
-    npm install
+rm -f /etc/init/cube-collector.conf
+rm -r /etc/init/cube-evaluator.conf
 
-    cd ..
-  fi
+# We will be saving cube in our home directory.
+cd /home/vagrant
+rm -rf cube
+# Download the Cube repo.
+git clone https://github.com/square/cube.git
+# Change the directory into the repo's folder.
+cd cube
+# Check out the latest stable release.
+git checkout v0.2.12
+# Install Cube's dependencies
+npm install
+cd ..
 
-  COLLECTOR_FILE=$(cat <<EOF
+COLLECTOR_FILE=$(cat <<EOF
 #!upstart
 description "A collector for the Cube DBMS"
 author "Salehen Shovon Rahman"
@@ -76,11 +77,11 @@ script
 end script
 EOF)
 
-  echo "$COLLECTOR_FILE" > /etc/init/cube-collector.conf
-  
-  start cube-collector
+echo "$COLLECTOR_FILE" > /etc/init/cube-collector.conf
 
-  EVALUATOR_FILE=$(cat <<EOF
+start cube-collector
+
+EVALUATOR_FILE=$(cat <<EOF
 #!upstart
 description "The evaluator for the cube DBMS"
 author "Salehen Shovon Rahman"
@@ -90,16 +91,15 @@ stop on shutdown
 
 env PROGRAM_NAME="cube-evaluator"
 env NODE_PATH="/usr/local/bin/node"
-env EVALUATOR="/home/vagrant/cube/bin/evaluator.js"
+env EVALUATOR="bin/evaluator.js"
 
 script
   echo \$\$ > /var/run/\$PROGRAM_NAME.pid
+  cd "/home/vagrant/cube"
   exec \$NODE_PATH \$EVALUATOR >> /var/log/\$PROGRAM_NAME.sys.log 2>&1
 end script
 EOF)
 
-  echo "$EVALUATOR_FILE" > /etc/init/cube-evaluator.conf
+echo "$EVALUATOR_FILE" > /etc/init/cube-evaluator.conf
 
-  start cube-evaluator
-
-fi
+start cube-evaluator
