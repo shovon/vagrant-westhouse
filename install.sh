@@ -67,16 +67,15 @@ stop on shutdown
 
 env PROGRAM_NAME="cube-collector"
 env NODE_PATH="/usr/local/bin/node"
-env HOME_PATH="/home/vagrant"
-env CUBE_PATH="\$HOME_PATH/cube"
-env COLLECTOR="\$CUBE_PATH/bin/collector.js"
+env COLLECTOR="/home/vagrant/cube/bin/collector.js"
 
 script
   echo "Trying to start the collector..."
   echo \$\$ > /var/run/\$PROGRAM_NAME.pid
-  exec \$NODE_PATH $COLLECTOR >> /var/log/\$PROGRAM_NAME.sys.log 2>&1
+  exec \$NODE_PATH \$COLLECTOR >> /var/log/\$PROGRAM_NAME.sys.log 2>&1
 end script
 EOF)
+
   echo "$COLLECTOR_FILE" > /etc/init/cube-collector.conf
   
   start cube-collector
@@ -91,17 +90,14 @@ stop on shutdown
 
 env PROGRAM_NAME="cube-evaluator"
 env NODE_PATH="/usr/local/bin/node"
-env HOME_PATH="/home/vagrant"
-env CUBE_PATH="\$HOME_PATH/cube"
-env EVALUATOR="\$CUBE_PATH/bin/evaluator.js"
+env EVALUATOR="/home/vagrant/cube/bin/evaluator.js"
 
 script
-  echo "Trying to start the evaluator..."
   echo \$\$ > /var/run/\$PROGRAM_NAME.pid
-  exec \$NODE_PATH $EVALUATOR >> /var/log/\$PROGRAM_NAME.sys.log 2>&1
+  exec \$NODE_PATH \$EVALUATOR >> /var/log/\$PROGRAM_NAME.sys.log 2>&1
 end script
 EOF)
-  
+
   echo "$EVALUATOR_FILE" > /etc/init/cube-evaluator.conf
 
   start cube-evaluator

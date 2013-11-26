@@ -25,5 +25,6 @@ If it's your first time running this Vagrant set-up, then you might have to wait
 ## Exposed Services
 
 - MongoDB: port 2701
-- Cube's Collector: port 1080
+- Cube's Collector TCP server: port 1080
+- Cube's Collector UDP server: port 1180
 - Cube's Evaluator: port 1081
