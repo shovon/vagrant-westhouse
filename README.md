@@ -27,3 +27,5 @@ Otherwise, it should take a few seconds until the machine is fully booted.
 ## Exposed Services
 
 - MongoDB: port 2701
+- Cube's Collector: port 1080
+- Cube's Evaluator: port 1081
