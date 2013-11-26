@@ -30,7 +30,7 @@ if [ ! -f /usr/local/bin/node ]; then
   # Change the directory to the repo's folder.
   cd node
   # Check out the latest stable release.
-  git checkout v0.20.22
+  git checkout v0.10.22
   # Compile, and install Node.js
   ./configure && make && make install
 
