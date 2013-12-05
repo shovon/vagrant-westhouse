@@ -2,7 +2,7 @@
 
 A development environment for the West House Project. It solves the problem of "hey, it doesn't work on my machine!"
 
-It does so by running a headless VirtualBox Ubuntu 12.04 64-bit Virtual Machine (VM). Databases like MongoDB will run in the context of the VM. More on how to access the database below (in the section on "Exposed Services").
+It does so by running a headless VirtualBox Ubuntu 12.04 64-bit Virtual Machine (VM). DBMSes--such as MySQL--will run in the context of the VM. More on how to access the database below (in the section on "Exposed Services").
 
 ## Set-Up
 
@@ -24,7 +24,6 @@ If it's your first time running this Vagrant set-up, then you might have to wait
 
 ## Exposed Services
 
-- MongoDB: port 2701
-- Cube's Collector TCP server: port 1080
-- Cube's Collector UDP server: port 1180
-- Cube's Evaluator: port 1081
+The VM instance is broadcasting on host 33.33.33.10.
+
+- MySQL: port 3306, username: root, password: root
