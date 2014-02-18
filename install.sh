@@ -18,3 +18,5 @@ cat /dev/null > /etc/mysql/my.cnf
 cat /vagrant/configs/my.cnf > /etc/mysql/my.cnf
 
 restart mysql
+
+sudo apt-get install redis-server

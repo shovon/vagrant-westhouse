@@ -27,3 +27,4 @@ If it's your first time running this Vagrant set-up, then you might have to wait
 The VM instance is broadcasting on host 33.33.33.10.
 
 - MySQL: port 3306, username: root, password: root
+- Redis: port 6379

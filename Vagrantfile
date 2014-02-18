@@ -1,3 +1,4 @@
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're
 # doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -27,6 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.network :forwarded_port, guest: 80, host: 8080
   #config.vm.network :forwarded_port, guest: 3306, host: 3307
   config.vm.network :forwarded_port, guest: 3306, host: 3306
+  config.vm.network :forwarded_port, guest: 6379, host: 6379
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
