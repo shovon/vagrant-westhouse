@@ -22,7 +22,16 @@ cat /vagrant/configs/my.cnf > /etc/mysql/my.cnf
 
 restart mysql
 
-apt-get install redis-server -y
+cd /tmp
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+make
+
+cp src/redis-server /usr/local/bin
+cp src/redis-cli /usr/local/bin
+cp /vagrant/configs/redis-server.conf /etc/init/redis-server.conf
+start redis-server
 
 apt-get install git -y
 
