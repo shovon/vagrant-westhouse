@@ -31,6 +31,7 @@ make
 cp src/redis-server /usr/local/bin
 cp src/redis-cli /usr/local/bin
 cp /vagrant/configs/redis-server.conf /etc/init/redis-server.conf
+mkdir /home/vagrant/redis-saves
 start redis-server
 
 apt-get install git -y
