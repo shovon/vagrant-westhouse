@@ -50,3 +50,6 @@ git clone https://github.com/creationix/nvm.git $vagrant_home/.nvm
 source $vagrant_home/.nvm/nvm.sh
 
 nvm install v0.10.26
+
+wget http://s3.amazonaws.com/influxdb/influxdb_latest_i386.deb
+sudo dpkg -i influxdb_latest_i386.deb
