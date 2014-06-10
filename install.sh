@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-# Get into root
+# Get into root.
+
 sudo su
+
+apt-get update -y
+
+# Install build-essential.
 
 apt-get install build-essential -y
 
-apt-get update -y
+# Install MySQL
 
 echo "mysql-server mysql-server/root_password select root" | debconf-set-selections
 echo "mysql-server mysql-server/root_password_again select root" | debconf-set-selections
@@ -22,6 +27,8 @@ cat /vagrant/configs/my.cnf > /etc/mysql/my.cnf
 
 restart mysql
 
+# Install Redis
+
 cd /tmp
 wget http://download.redis.io/redis-stable.tar.gz
 tar xvzf redis-stable.tar.gz
@@ -34,22 +41,31 @@ cp /vagrant/configs/redis-server.conf /etc/init/redis-server.conf
 mkdir /home/vagrant/redis-saves
 start redis-server
 
+# Install MongoDB
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+sudo apt-get update
+sudo apt-get install mongodb-org
+
+# Install Git
+
 apt-get install git -y
+
+# Install cURL
 
 apt-get install curl -y
 
-mkdir /var/www
-
-chown -R vagrant /var/www
+# Get out of root.
 
 su - vagrant
 
 vagrant_home=/home/vagrant
+
+# Install Node.js
+
 git clone https://github.com/creationix/nvm.git $vagrant_home/.nvm
 
 source $vagrant_home/.nvm/nvm.sh
 
-nvm install v0.10.26
-
-wget http://s3.amazonaws.com/influxdb/influxdb_latest_i386.deb
-sudo dpkg -i influxdb_latest_i386.deb
+nvm install v0.10

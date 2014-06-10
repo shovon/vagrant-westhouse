@@ -42,8 +42,6 @@ vagrant up; vagrant ssh -c 'sudo ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGu
 
 ## Exposed Services
 
-The VM instance is broadcasting on host 33.33.33.10.
-
 - MySQL: port 3306, username: root, password: root
 - Redis: port 6379
-- InfuxDB: port 8083, port 8086
+- MongoDB: port 27017
