@@ -62,3 +62,11 @@ git clone https://github.com/creationix/nvm.git $vagrant_home/.nvm
 source $vagrant_home/.nvm/nvm.sh
 
 nvm install v0.10
+
+sudo chown vagrant -R $vagrant_home/.nvm
+echo "source $vagrant_home/.nvm/nvm.sh" >> $vagrant_home/.bashrc
+
+# Install Java
+
+sudo apt-get update
+sudo apt-get install default-jre
